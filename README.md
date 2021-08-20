@@ -135,5 +135,51 @@ $$
 
 
 
+> ​	**Definition** 2.6. The cross product of two 3D vectors $P$ and $Q$, written as $P\cross Q$, is a vector quantity given by the formula
+
+$$
+P\cross Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
+$$
+
+> ​	cross product in **matrix picture**(also known as **pseudodeterminant**), where $i,j,k$ are unit vector:
+
+$$
+P\cross Q = 
+\begin{vmatrix}
+\bold{i}&\bold{j}&\bold{k}\\
+P_x&P_y&P_z\\
+Q_x&Q_y&Q_z
+\end{vmatrix}\\\\
+i=\langle1,0,0\rangle\\
+j=\langle0,1,0\rangle\\
+k=\langle0,0,1\rangle\\
+$$
+
+<img src="img/pseudodeterminant-16294534591881.jpg" alt="pseudodeterminant" style="zoom: 67%;" />
+
+
+
+
+
+> ​	:star:**Theorem 2.7.** Let $P$ and $Q$ be any two 3D vectors. Then:
+
+$$
+(P\cross Q)\cdot P=0\\(P\cross Q)\cdot Q=0
+$$
+
+
+
+This is very easy to understand. The dot product between a vector and its *orthogonal complement* is **ZERO** because they have nothing aligned.
+
+
+
+> ​	:star: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\cross Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
+
+$$
+\norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
+$$
+
+
+
 
 
