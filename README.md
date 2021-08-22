@@ -3,6 +3,70 @@ Study notes of Mathematics for `Lengyel, Eric. 3D Game Programming and Computer 
 
 
 
+
+
+# Quick Reference
+
+## 2. Vector
+
+:pushpin:**Dot Products**
+The dot product between two $n$-dimensional vectors $P$ and $Q$ is a **scalar** defined by
+$$
+P\cdot Q=\sum_{i=1}^{n}P_iQ_i=P_1\cdot Q_1+P_2\cdot Q_2+...+P_n\cdot Q_n
+$$
+The dot product is related to the **angle** $a$ between the vectors $P$ and $Q$ by the formula
+$$
+P\cdot Q = \norm{P}\norm{Q}\cos{a}
+$$
+
+
+:pushpin:**Vector Projections**
+
+The **projection** of a vector $P$ onto a vector $Q$ is given by
+$$
+\text{proj}_QP = \frac{P\cdot Q}{\norm{Q}^2}Q
+$$
+and the component of $P$ that is **perpendicular** to $Q$ is given by
+$$
+\text{perp}_QP &= P-\text{proj}_QP\\
+&=P-\frac{P\cdot Q}{\norm{Q}^2}Q
+$$
+
+
+:pushpin:**Cross Products**
+
+The cross product between two 3D vectors $P$ and $Q $is a 3D vector defined by
+$$
+P\cross Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
+$$
+This can also be written as the **matrix-vector product**
+$$
+P\cross Q=
+\begin{bmatrix}
+0&-P_z&P_y\\
+P_z&0&-P_x\\
+-P_y&P_x&0
+\end{bmatrix}
+\begin{bmatrix}
+Q_x\\Q_y\\Q_z
+\end{bmatrix}
+$$
+The **magnitude** of the cross product is related to the **angle** $a$ between the vectors $P$ and $Q$ by the formula
+$$
+\norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
+$$
+
+
+:pushpin:**Gram-Schmidt Orthogonalization**
+
+A basis $\Beta=\{e_1,e_2,...,e_n\}$ for an $n$-dimensional vector space can be orthogonalized by constructing a new set of vectors $\Beta'=\{e_1',e_2',...,e_n'\}$ using the formula
+$$
+e_i'=e_i-\sum_{k=1}^{i-1}\frac{e_i\cdot e_k'}{e_k'^2}e_k'
+$$
+
+
+
+
 # Chapter 2 Vector
 
 ## 2.1 Vector Properties
@@ -127,6 +191,22 @@ $$
 
 
 
+> ​	:pushpin: **Projection**: for a vector $P$ projected onto $Q$ can be denoted as
+>
+> ​	:pushpin:**Perpendicular**: the projection perpendicular to original vector
+
+$$
+\begin{align}
+\text{proj}_QP &= \frac{P\cdot Q}{\norm{Q}^2}Q\\\\
+\text{perp}_QP &= P-\text{proj}_QP\\
+&=P-\frac{P\cdot Q}{\norm{Q}^2}Q
+\end{align}
+$$
+
+
+
+![](img/vector_proj_perp.png)
+
 ## 2.3 Cross Product
 
 :star: Big Picture: **calculates surface normal** at a particular point given two distinct tangent vectors.
@@ -155,9 +235,9 @@ j=\langle0,1,0\rangle\\
 k=\langle0,0,1\rangle\\
 $$
 
-<img src="img/pseudodeterminant-16294534591881.jpg" alt="pseudodeterminant" style="zoom: 67%;" />
+<img src="img/pseudodeterminant.jpg" alt="pseudodeterminant" style="zoom: 67%;" />
 
-
+:bangbang: **Attention:** the sign in front of $j$ is **negative**! Others are positive.
 
 
 
@@ -179,7 +259,117 @@ $$
 \norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
 $$
 
+> ​	:pushpin:**Right hand rule**: The cross product is with orientation.
 
+<img src="img/image-20210821193945570.png" alt="image-20210821193945570" style="zoom:50%;" />
+
+> ​	:star: **Area of cross product**: it is the **parallelogram** formed by $P$ and $Q$.
+
+$$
+\text{Area} = \norm{Q}\cdot\norm{P}\sin{a}=\text{base}\cross\text{height}=P\cross Q
+$$
+
+
+
+<img src="img/image-20210821194922823.png" alt="image-20210821194922823" style="zoom: 67%;" />
+
+
+
+> ​	:star: **Theorem 2.9.** Given any two scalars $a$ and $b$, and any three 3D vectors $P$, $Q$, and $R$, the following properties hold.
+
+$$
+Q\cross P = -(P\cross Q)\\
+(aP)\cross Q = a(P\cross Q)\\
+P\cross(Q+R)=P\cross Q+P\cross R\\
+P\cross P = 0 = \langle0,0,0\rangle\\
+(P\cross Q)\cdot R = (R\cross P)\cdot Q = (Q\cross R)\cdot P\\
+P\cross(Q\cross P) = P\cross Q\cross P = P^2Q - (P\cdot Q)P
+$$
+
+
+
+> ​	:pushpin: **Anticommutative**, is a characteristic of cross product which implies the **order** of cross product matters.
+
+$$
+(P\cross Q)\cross R \neq P\cross (Q\cross R)
+$$
+
+
+
+
+
+## 2.4 Vector Space
+
+> ​	:star: **Definition 2.10.** A vector space is a set $V$, whose elements are called vectors, for which addition and scalar multiplication are defined, and the following properties hold.
+
+- $P\in V,\space Q\in V, \quad \text{s.t.  }P+Q\in V$
+- $P\in V, a\in \mathbb{R}, \text{  s.t.  }aP\in V$
+- $\exist\space 0\in V, \text{s.t.}\quad\ P+0=P$.
+- $\exist\space Q\in V, \text{s.t.}\quad\ P+Q=0$.
+- $(P+Q)+R=P+(Q+R)$
+-  $(ab)P=a(bP)$
+- $a(P+Q)=aP+aQ$
+- $(a+b)P = aP+bP$
+
+
+
+> ​	:star:**Definition 2.11.** A set of $n$ vectors  $\{e_1,e_2,...,e_n\}$ is **linearly independent** if there **do not exist** real number $a_1,a_2,...,a_n$ where at least one of the $a_i$ is not zero, such that
+
+$$
+a_1e_1+a_2e_2+\cdots+a_ne_n=0
+$$
+
+> ​	otherwise, the set $\{e_1,e_2,...,e_n\}$ is called **linearly dependent.**
+
+
+
+> ​	:star:**Definition 2.13.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called orthogonal if for every pair $(i,j)$ with $i\neq j$, we have:
+
+$$
+e_i\cdot e_j=0
+$$
+
+
+
+> ​	:star:**Theorem 2.14.** Given two nonzero vectors $e_1$ and $e_2$ , if $e_1\cdot e_2=0$ , then $e_1$ and $e_2$ are **linearly independent**。
+>
+> which is very easy to understand since they have nothing overlapped.
+
+
+
+> ​	**Definition 2.15.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called **orthonormal** if for every pair $(i,j)$ we have $$
+
+$$
+\begin{align}
+e_i\cdot e_j=\delta_{ij}\\
+\delta_{ij}=
+\begin{cases}
+1,\text{ if }i=j\\0,\text{ if }i\neq j
+\end{cases}
+\end{align}
+$$
+
+where $\delta_{ij}$ is called **Kronecker delta**. 
+
+
+
+> ​	:computer:**Algorithm 2.16.** Gram-Schmidt Orthogonalization. Given a set of $n$ linearly independent vectors $\Beta=\{e_1,e_2,...,e_n\}$, this algorithm produces a set $\Beta'=\{e_1',e_2',...,e_n'\}$ such that
+
+$$
+e_i'\cdot e_j'=0, \text{whenever }i\neq j
+$$
+
+- A. set $e_1'=e_1$
+- B. Begin with index $i=2$
+- C. Subtract the projection of $e_i$ onto the vector $e_1',e_2',...,e_{i-1}'$ from $e_i$ and store the result in $e_i'$. That is
+
+$$
+e_i'=e_i-\sum_{k=1}^{i-1}\frac{e_i\cdot e_k'}{e_k'^2}e_k'
+$$
+
+- D. If $i<n$, $i++$, back to step C.
+
+:star:Big picture of Gram-Schmidt Orthogonalization: it **alternates coordinate systems.**
 
 
 
