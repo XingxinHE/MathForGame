@@ -5,6 +5,8 @@ Study notes of Mathematics for `Lengyel, Eric. 3D Game Programming and Computer 
 
 
 
+
+
 # Quick Reference
 
 ## 2. Vector
@@ -370,6 +372,119 @@ $$
 - D. If $i<n$, $i++$, back to step C.
 
 :star:Big picture of Gram-Schmidt Orthogonalization: it **alternates coordinate systems.**
+
+
+
+
+
+# Chapter 3 Matrices
+
+:star: **Big picture**: It means to cover calculation between different Cartesian coordinate spaces.
+
+## 3.1 Matrix Properties
+
+> ​	**Basic representation** of a matrix:
+
+$$
+M_{ij} = \begin{bmatrix}
+F_{11}&F_{12}&F_{13}&F_{14}\\
+F_{21}&F_{22}&F_{23}&F_{24}\\
+F_{31}&F_{32}&F_{33}&F_{34}\\
+\end{bmatrix}
+$$
+
+where $i$ and $j$ represents **$i$-th row of the $j$-th column**. In this case, $i=3,j=4$
+
+
+
+
+
+> ​	**Transpose** of a matrix:
+
+$$
+M_{ij}^T = 
+\begin{bmatrix}
+F_{11}&F_{21}&F_{31}\\
+F_{12}&F_{22}&F_{32}\\
+F_{13}&F_{23}&F_{33}\\
+F_{14}&F_{24}&F_{34}\\
+\end{bmatrix}
+$$
+
+
+
+> ​	:star:**Matrix multiplication**: suppose 2 matrices $F$($n\cross m_1$) and $G(m_2\cross p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. The shape of output matrix is $n\cross p$. The $i,j$ element of the matrix is:
+
+$$
+(FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
+$$
+
+> ​	:bulb: Another picture of this: the $(i,j)$ entry of $FG$ is equal to the **dot product of the $i$-th row of $F$ and the $j$-th column of $G$**. e.g.
+
+```python
+>>> import numpy as np
+>>> F = np.array([[2,3,1],
+                  [3,0,1]])
+>>> G = np.array([[1,2],
+                  [4,0],
+                  [3,2]])
+>>> F@G
+array([[17,  6],
+       [ 6,  8]])
+```
+
+The `2,2` element of output matrix is the dot product of $2$-th row of $F$ and $2$-th colomn of $G$ 
+$$
+M_{22}=\begin{bmatrix}3&0&1\end{bmatrix}\begin{bmatrix}2\\0\\2\end{bmatrix}
+$$
+
+> ​	**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
+
+$$
+F+G=G+F\\
+(F+G)+H = F+(G+H)\\
+a(bF)=(ab)F\\
+a(F+G) = aF+aG\\
+(a+b)F = aF+bF
+$$
+
+
+
+> ​	**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
+
+$$
+(aF)G = a(FG)\\
+(FG)H = F(GH)\\
+(FG)^T = G^TF^T
+$$
+
+
+
+## 3.2 Linear Systems
+
+
+
+
+
+
+
+# Notation Convention
+
+| Quantity/Operation | Notation/Examples                          |
+| ------------------ | ------------------------------------------ |
+| Scalars            | Italic letters: $x,t,A,a,\omega$           |
+| Angles             | Italic Greek letters: $\theta,\phi,a$      |
+| Vectors            | Boldface letters: $\bold{V, P, x, \omega}$ |
+| Quaternions        | Boldface letters: $\bold{q_1, q , q_2}$    |
+| Matrices           | Boldface letters: $\bold{M,P}$             |
+|                    |                                            |
+|                    |                                            |
+|                    |                                            |
+|                    |                                            |
+
+
+
+
 
 
 
