@@ -3,7 +3,19 @@ Study notes of Mathematics for `Lengyel, Eric. 3D Game Programming and Computer 
 
 
 
+# Notation Convention
 
+| Quantity/Operation | Notation/Examples                          |
+| ------------------ | ------------------------------------------ |
+| Scalars            | Italic letters: $x,t,A,a,\omega$           |
+| Angles             | Italic Greek letters: $\theta,\phi,a$      |
+| Vectors            | Boldface letters: $\bold{V, P, x, \omega}$ |
+| Quaternions        | Boldface letters: $\bold{q_1, q , q_2}$    |
+| Matrices           | Boldface letters: $\bold{M,P}$             |
+|                    |                                            |
+|                    |                                            |
+|                    |                                            |
+|                    |                                            |
 
 
 
@@ -462,29 +474,102 @@ $$
 
 ## 3.2 Linear Systems
 
+> ​	Matrix is very handy in solving **linear equations**:
+
+$$
+\begin{align}
+3x+2y-3z&=-13\\
+4x-3y+6z&=7\\
+x-z&=-5
+\end{align}
+$$
+
+> ​	can illustrated as **matrix format**:
+
+$$
+\begin{bmatrix}
+3&2&-3\\
+4&-3&6\\
+1&0&-1
+\end{bmatrix}
+\begin{bmatrix}
+x\\y\\z
+\end{bmatrix}=
+\begin{bmatrix}
+-13&7&5
+\end{bmatrix}
+$$
+
+> ​	looking in a **big picture**:
+
+$$
+Ax=b
+$$
+
+- $A$ , the **coefficient matrix**
+- $x$, unknown
+- $b$, right-hand side, **constant vector**
 
 
 
 
 
-
-# Notation Convention
-
-| Quantity/Operation | Notation/Examples                          |
-| ------------------ | ------------------------------------------ |
-| Scalars            | Italic letters: $x,t,A,a,\omega$           |
-| Angles             | Italic Greek letters: $\theta,\phi,a$      |
-| Vectors            | Boldface letters: $\bold{V, P, x, \omega}$ |
-| Quaternions        | Boldface letters: $\bold{q_1, q , q_2}$    |
-| Matrices           | Boldface letters: $\bold{M,P}$             |
-|                    |                                            |
-|                    |                                            |
-|                    |                                            |
-|                    |                                            |
+> ​	:pushpin: **nonhomogeneous** : right hand side is nonzero
+>
+> ​	:pushpin: **homogeneous** : right hand side is full of zero
 
 
 
 
+
+> ​	**Elementary row operation**: It is one of the following three operations that can be performed on a matrix
+
+1. exchange 2 rows
+2. multiply a row by a nonzero scalar
+3. add a multiple of one row to another row
+
+
+
+
+
+> ​	:star: **Definition 3.4.** A matrix is in **reduced form** if and only if it satisfies the following conditions.
+
+1. For every nonzero row, the leftmost nonzero entry, called the leading entry, is 1.
+2. Every nonzero row precedes every row of zeros. That is, all rows of zeros reside at the bottom of the matrix.
+3. If a row’s leading entry resides in column $j$, then no other row has a nonzero entry in column $j$.
+4. For every pair of nonzero rows $i_1$ and $i_2$ such that $i_2>i_1$, the columns $j_1$ and $j_2$ containing those rows’ leading entries must satisfy $j_2>j_1$
+
+
+
+
+
+> ​	:bulb: Difference between **Reduced Row Echelon Form** and **Row Echelon Form**: The main difference is that it is easy to read the null space off the RREF, but it takes more work for the REF.
+
+Applying a row operation to $A$ amounts to left-multiplying $A$ by an elementary matrix $E$. This preserves the null space, as $Av = 0 \iff EA v = 0$ (elementary matrices are invertible). Hence both $A$ and its RREF (and REF) have the same null space, and it is a simple matter to read off the null space from the RREF.
+
+
+
+
+
+> ​	:bulb: reduced form is also called reduced echelon form. Therefore, it's better to memorize **reduced form** and **echelon form** at the same time.
+
+$$
+\text{Example of reduced form: }\\
+\begin{bmatrix}
+1&0&-3&0\\
+0&1&2&0\\
+0&0&0&1\\
+0&0&0&0
+\end{bmatrix}
+\\\\
+\text{Example of reduced form: }\\
+\begin{bmatrix}
+1&0&-3&0\\
+0&1&2&0\\
+0&0&0&1\\
+0&0&0&0
+\end{bmatrix}
+$$
 
 
 
