@@ -27,6 +27,7 @@ int main()
 	Eigen::Vector3d e1((sqrt(2) / 2), (sqrt(2) / 2), 0);
 	Eigen::Vector3d e2(-1, 1, -1);
 	Eigen::Vector3d e3(0, -2, -2);
+
 	std::vector<Eigen::Vector3d> input_vectors{ e1,e2,e3 };
 	std::cout << "Input vectors are: \n" << std::endl;
 	for (auto v : input_vectors)
@@ -86,9 +87,10 @@ std::vector<Eigen::Vector3d> GramSchimitOrtho(std::vector<Eigen::Vector3d> input
 	for (int i = 1; i < amount; i++)
 	{
 		Eigen::Vector3d rhs;
+		rhs.setZero();
 		for (int j = 0; j < i; j++)
 		{
-			rhs = rhs + (input_vectors[i].dot(ortho_vectors[j]) * (ortho_vectors[j].normalized()));
+			rhs = rhs + (input_vectors[i].dot(ortho_vectors[j].normalized()) * (ortho_vectors[j].normalized()));
 		}
 
 		ortho_vectors.push_back(input_vectors[i] - rhs);
