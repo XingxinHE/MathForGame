@@ -450,7 +450,7 @@ $$
 M_{22}=\begin{bmatrix}3&0&1\end{bmatrix}\begin{bmatrix}2\\0\\2\end{bmatrix}
 $$
 
-> ​	**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
+> ​	:star:**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
 
 $$
 F+G=G+F\\
@@ -462,7 +462,7 @@ $$
 
 
 
-> ​	**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
+> ​	:star:**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
 
 $$
 (aF)G = a(FG)\\
@@ -543,7 +543,7 @@ $$
 
 
 
-> ​	:bulb: Difference between **Reduced Row Echelon Form** and **Row Echelon Form**: The main difference is that it is easy to read the null space off the RREF, but it takes more work for the REF.
+> ​	:bulb: **Big picture**: Difference between **Reduced Row Echelon Form** and **Row Echelon Form**: The main difference is that it is easy to read the null space off the RREF, but it takes more work for the REF.
 
 Applying a row operation to $A$ amounts to left-multiplying $A$ by an elementary matrix $E$. This preserves the null space, as $Av = 0 \iff EA v = 0$ (elementary matrices are invertible). Hence both $A$ and its RREF (and REF) have the same null space, and it is a simple matter to read off the null space from the RREF.
 
@@ -554,21 +554,95 @@ Applying a row operation to $A$ amounts to left-multiplying $A$ by an elementary
 > ​	:bulb: reduced form is also called reduced echelon form. Therefore, it's better to memorize **reduced form** and **echelon form** at the same time.
 
 $$
-\text{Example of reduced form: }\\
+\text{Example of Row Echelon Form: }\\
 \begin{bmatrix}
 1&0&-3&0\\
-0&1&2&0\\
+0&2&2&0\\
 0&0&0&1\\
 0&0&0&0
 \end{bmatrix}
 \\\\
-\text{Example of reduced form: }\\
+\text{Example of Reduced Row Echelon Form: }\\
 \begin{bmatrix}
 1&0&-3&0\\
 0&1&2&0\\
 0&0&0&1\\
 0&0&0&0
 \end{bmatrix}
+$$
+
+
+
+| Row Echelon Form                                             | Reduced Row Echelon Form                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| The first non-zero number from the left (the “leading coefficient”) is always to the right of the first non-zero number in the row above. | The first non-zero number in the first row (**the leading entry**) is the number 1. |
+| Rows consisting of all zeros are at the bottom of the matrix. | The second row also starts with the number 1, which is further to the right than the leading entry in the first row. For every subsequent row, the number 1 must be further to the right. |
+|                                                              | The leading entry in each row must be the only non-zero number in its column. |
+|                                                              | Any non-zero rows are placed at the bottom of the matrix.    |
+
+
+
+
+
+> ​	:computer: **Algorithm 3.6.** This algorithm transforms an $n\cross(n+1)$ augmented matrix $M$ representing a linear system into its reduced form. At each step, $M$ refers to the *current state* of the matrix, *not the original state*.
+
+- A. Set the row $i$ equal to 1.
+- B. Set the column $j$ equal to 1. We will loop through columns 1 to $n$.
+- C. Find the row $k$ with $k≥i$ for which $M_{kj}$ has the largest absolute value. If no such row exists for which $M_{kj} ≠0$ , then skip to step H.
+- D. If $k≠i$ , then exchange rows $k$ and $i$ using elementary row operation(a) under Definition 3.3.
+- E. Multiply row $i$ by $1/M{ij}$ . This sets the $(i,j)$ entry of $M$ to 1 using elementary row operation (b).
+- F. For each row $r$, where $1  ≤r≤n$ and $r≠i$ , add $−M_{rj}$ times row $i$ to row $r$. This step clears each entry above and below row $i$ in column $j$ to 0 using elementary row operation (c).
+- G. Increment $i$.
+- H. If $j<n$ , increment $j$ and loop to step C.
+
+//TODO C++ program of algorithm 3.6
+
+
+
+
+
+
+
+## 3.3 Matrix Inverse
+
+> ​	:star: **Invertible** : A matrix $M^{-1}$ is the *inverse* of $M$, such that - 
+
+$$
+MM^{-1} = M^{-1}M=1
+$$
+
+> ​	:star:**Singular**: Matrix is not *invertible*.
+
+
+
+> ​	:star:**Theorem 3.9.** A matrix possessing a row or column consisting **entirely of zeros** is **not invertible**.
+
+
+
+> ​	:star:**Theorem 3.10.** A matrix $M$ is *invertible* if and only if $M^T$ is invertible.
+
+
+
+
+> ​	:star:**Theorem 3.11.** If $F$ and $G$ are $n\cross n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
+
+
+
+> ​	:pushpin: **Gauss-Jordan Elimination** : It is used to **transform a matrix into its reduced form.** But it can also be used to calculate the inverse of a matrix.
+
+For an $n\cross n\text{  matrix } M,$ 
+
+- A. construct an $n\cross 2n\text{  matrix } \tilde{M},$
+- B. concatenating the identity matrix to the right of $\tilde{M}$,   (as shown below).
+- C. Performing elementary row operations on the entire matrix $\tilde{M}$ until the left side $n×n$ matrix becomes the identity matrix $I_n$
+- D. Then the right hand side is the **inverse**$M^{-1}$
+
+$$
+\begin{align}
+&M\quad\cross&I\\
+&\Downarrow&\Downarrow\\
+&I\quad\cross&M^{-1}\\
+\end{align}
 $$
 
 
