@@ -634,6 +634,21 @@ For an $n\cross n\text{  matrix } M,$
 
 - A. construct an $n\cross 2n\text{  matrix } \tilde{M},$
 - B. concatenating the identity matrix to the right of $\tilde{M}$,   (as shown below).
+
+$$
+\tilde{M}=
+\left[
+\begin{array}{cccc:cccc}
+M_{11}&M_{12}&\cdots&M_{1n}&1&0&\cdots&0\\ 
+M_{21}&M_{22}&\cdots&M_{2n}&0&1&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+M_{n1}&M_{n2}&\cdots&M_{nn}&0&0&\cdots&1\\ 
+\end{array}
+\right]
+$$
+
+
+
 - C. Performing elementary row operations on the entire matrix $\tilde{M}$ until the left side $n×n$ matrix becomes the identity matrix $I_n$
 - D. Then the right hand side is the **inverse**$M^{-1}$
 
@@ -646,4 +661,8 @@ $$
 $$
 
 
+
+
+
+> ​	:computer: **Algorithm 3.12.** Gauss-Jordan Elimination. This algorithm calculates the **inverse** of an $n\cross n$ matrix $M$.
 

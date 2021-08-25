@@ -5,6 +5,7 @@
 #include <cmath>
 
 std::vector<Eigen::Vector3d> GramSchimitOrtho(std::vector<Eigen::Vector3d> input_vectors);
+std::vector<Eigen::Vector4d> GramSchimitOrtho(std::vector<Eigen::Vector4d> input_vectors);
 
 
 
@@ -71,6 +72,46 @@ int main()
 	std::cout << "\nThe area of parallelogram formed by 3 points is: "
 		<< P1P2.cross(P1P3).norm() << std::endl;
 
+
+	//Exercise Extra - Testing R^n for GramSchmidt algorithm
+	std::cout << "\n\n\nExercise extra. \n" << std::endl;
+	Eigen::Vector4d W(8, 1, 3, 4);
+	Eigen::Vector4d E(2, 4, 2, 6);
+	Eigen::Vector4d R(3, 9, 5, 3);
+	Eigen::Vector4d T(7, 8, 6, 2);
+	std::vector<Eigen::Vector4d> input_vectors_Xd{ W,E,R,T };
+	std::vector<Eigen::Vector4d> output_vectors_Xd = GramSchimitOrtho(input_vectors_Xd);
+
+	std::cout << "Input R^n vectors are: \n" << std::endl;
+	for (auto v : input_vectors_Xd)
+	{
+		std::cout << "Vector--" << std::endl;
+		std::cout << v << std::endl;
+	}
+
+	std::cout << "After Gram-Schmidt Orthogonalization: \n" << std::endl;
+	for (auto v : output_vectors_Xd)
+	{
+		std::cout << v << std::endl;
+	}
+
+
+	std::cout << "\nEvaluation: " << std::endl;
+	std::cout << "a1 * a2" << std::endl;
+	std::cout << round(output_vectors_Xd[0].dot(output_vectors_Xd[1])) << std::endl;
+	std::cout << "a1 * a3" << std::endl;
+	std::cout << round(output_vectors_Xd[0].dot(output_vectors_Xd[2])) << std::endl;
+	std::cout << "a1 * a4" << std::endl;
+	std::cout << round(output_vectors_Xd[0].dot(output_vectors_Xd[3])) << std::endl;
+	std::cout << "a2 * a3" << std::endl;
+	std::cout << round(output_vectors_Xd[1].dot(output_vectors_Xd[2])) << std::endl;
+	std::cout << "a2 * a4" << std::endl;
+	std::cout << round(output_vectors_Xd[1].dot(output_vectors_Xd[3])) << std::endl;
+	std::cout << "a3 * a4" << std::endl;
+	std::cout << round(output_vectors_Xd[2].dot(output_vectors_Xd[3])) << std::endl;
+
+	std::string input = "";
+	std::cin >> input;
 	return 0;
 }
 
@@ -87,6 +128,31 @@ std::vector<Eigen::Vector3d> GramSchimitOrtho(std::vector<Eigen::Vector3d> input
 	for (int i = 1; i < amount; i++)
 	{
 		Eigen::Vector3d rhs;
+		rhs.setZero();
+		for (int j = 0; j < i; j++)
+		{
+			rhs = rhs + (input_vectors[i].dot(ortho_vectors[j].normalized()) * (ortho_vectors[j].normalized()));
+		}
+
+		ortho_vectors.push_back(input_vectors[i] - rhs);
+	}
+
+	return ortho_vectors;
+}
+
+std::vector<Eigen::Vector4d> GramSchimitOrtho(std::vector<Eigen::Vector4d> input_vectors)
+{
+
+	std::vector<Eigen::Vector4d> ortho_vectors;
+
+
+
+	int amount = input_vectors.size();
+	Eigen::Vector4d q1 = input_vectors[0];
+	ortho_vectors.push_back(q1);
+	for (int i = 1; i < amount; i++)
+	{
+		Eigen::Vector4d rhs;
 		rhs.setZero();
 		for (int j = 0; j < i; j++)
 		{
