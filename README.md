@@ -179,7 +179,7 @@ $$
 
 
 
-> ​	:star:**Theorem**: Given two $n$-dimensional vectors $P$ and $Q$, the dot product $P\cdot Q$ satisfies the equation. $a$ is the angle between $P$ and $Q$.
+> ​	:pencil: **Theorem**: Given two $n$-dimensional vectors $P$ and $Q$, the dot product $P\cdot Q$ satisfies the equation. $a$ is the angle between $P$ and $Q$.
 
 $$
 P\cdot Q = \norm{P}\norm{Q}\cos{a}
@@ -191,7 +191,7 @@ $$
 
 
 
-> ​	:star: **Theorem**: Given any scalar $a$ and any three vectors $P, Q$, and $R$, the following properties hold.
+> ​	:pencil: **Theorem**: Given any scalar $a$ and any three vectors $P, Q$, and $R$, the following properties hold.
 
 $$
 \begin{align}
@@ -255,7 +255,7 @@ $$
 
 
 
-> ​	:star:**Theorem 2.7.** Let $P$ and $Q$ be any two 3D vectors. Then:
+> ​	:pencil:**Theorem 2.7.** Let $P$ and $Q$ be any two 3D vectors. Then:
 
 $$
 (P\cross Q)\cdot P=0\\(P\cross Q)\cdot Q=0
@@ -267,7 +267,7 @@ This is very easy to understand. The dot product between a vector and its *ortho
 
 
 
-> ​	:star: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\cross Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
+> ​	:pencil: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\cross Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
 
 $$
 \norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
@@ -289,7 +289,7 @@ $$
 
 
 
-> ​	:star: **Theorem 2.9.** Given any two scalars $a$ and $b$, and any three 3D vectors $P$, $Q$, and $R$, the following properties hold.
+> ​	:pencil: **Theorem 2.9.** Given any two scalars $a$ and $b$, and any three 3D vectors $P$, $Q$, and $R$, the following properties hold.
 
 $$
 Q\cross P = -(P\cross Q)\\
@@ -345,7 +345,7 @@ $$
 
 
 
-> ​	:star:**Theorem 2.14.** Given two nonzero vectors $e_1$ and $e_2$ , if $e_1\cdot e_2=0$ , then $e_1$ and $e_2$ are **linearly independent**。
+> ​	:pencil:**Theorem 2.14.** Given two nonzero vectors $e_1$ and $e_2$ , if $e_1\cdot e_2=0$ , then $e_1$ and $e_2$ are **linearly independent**。
 >
 > which is very easy to understand since they have nothing overlapped.
 
@@ -450,7 +450,7 @@ $$
 M_{22}=\begin{bmatrix}3&0&1\end{bmatrix}\begin{bmatrix}2\\0\\2\end{bmatrix}
 $$
 
-> ​	:star:**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
+> ​	:pencil:**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
 
 $$
 F+G=G+F\\
@@ -462,7 +462,7 @@ $$
 
 
 
-> ​	:star:**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
+> ​	:pencil:**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
 
 $$
 (aF)G = a(FG)\\
@@ -522,7 +522,7 @@ $$
 
 
 
-> ​	**Elementary row operation**: It is one of the following three operations that can be performed on a matrix
+> ​	:star:**Definition 3.3. Elementary row operation**: It is one of the following three operations that can be performed on a matrix
 
 1. exchange 2 rows
 2. multiply a row by a nonzero scalar
@@ -615,16 +615,16 @@ $$
 
 
 
-> ​	:star:**Theorem 3.9.** A matrix possessing a row or column consisting **entirely of zeros** is **not invertible**.
+> ​	:pencil:**Theorem 3.9.** A matrix possessing a row or column consisting **entirely of zeros** is **not invertible**.
 
 
 
-> ​	:star:**Theorem 3.10.** A matrix $M$ is *invertible* if and only if $M^T$ is invertible.
+> ​	:pencil:**Theorem 3.10.** A matrix $M$ is *invertible* if and only if $M^T$ is invertible.
 
 
 
 
-> ​	:star:**Theorem 3.11.** If $F$ and $G$ are $n\cross n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
+> ​	:pencil:**Theorem 3.11.** If $F$ and $G$ are $n\cross n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
 
 
 
@@ -645,6 +645,8 @@ M_{21}&M_{22}&\cdots&M_{2n}&0&1&\cdots&0\\
 M_{n1}&M_{n2}&\cdots&M_{nn}&0&0&\cdots&1\\ 
 \end{array}
 \right]
+\tag{3.34}
+\label{augmented matrix}
 $$
 
 
@@ -665,4 +667,65 @@ $$
 
 
 > ​	:computer: **Algorithm 3.12.** Gauss-Jordan Elimination. This algorithm calculates the **inverse** of an $n\cross n$ matrix $M$.
+
+- A. Construct the augmented matrix $\tilde{M}$ given in $\eqref{augmented matrix}$. Throughout this algorithm, $\tilde{M}$ refers to the current state of the augmented matrix, not the original state.
+- B. Set the column $j$ equal to 1. We will loop through columns 1 to $n$.
+- C. Find the row $i$ with $i ≥ j$ such that $\tilde{M}_{ij}$ has the largest absolute value. If no such row exists for which  $\tilde{M}_{ij}≠ 0$, then $M$ is **not invertible**.
+- D. If $i ≠ j$, then exchange rows $i$ and $j$ **exchange 2 rows**. This is the **pivot operation** necessary to remove zeros from the main diagonal and to provide numerical stability.
+- E. Multiply row $j$ by $1/\tilde{M}_{ij}$ . This sets the $(j,j)$ entry of $\tilde{M}$ to 1 **multiply a row by a nonzero scalar**.
+- F. For each row $r$ where $1≤r≤n$ and $r ≠ j$, add $−\tilde{M}_{ij}$ times row $j$ to row $r$. This step clears each entry above and below row $j$ in column $j$ to 0, **add a multiple of one row to another row**.
+- G. If $j<n$ , increment $j$ and loop to step C.
+
+
+
+> ​	:pencil:**Theorem 3.14.** Let $M'$ be the $n\cross n$ matrix resulting from the performance of an elementary row operation on the $n\cross n$ matrix $M$. Then $M'=EM$, where $E$ is the $n\cross n$ matrix resulting from the same **elementary row operation** performed on the identity matrix.
+
+
+
+> ​	:pencil:**Theorem 3.15.** An $n\cross n$ matrix $M$ is **invertible** if and only if the rows of $M$ **form a linearly independent set of vectors**.
+
+
+
+
+
+## 3.4 Determinant
+
+> ​	$\text{det}M$:	The **determinant** of a square matrix is a scalar quantity derived from the entries of the matrix.
+
+$$
+\text{An example of determinant of 3*3 matrix}\\
+\text{det}M=
+\begin{vmatrix}
+M_{11}&M_{12}&M_{13}\\ 
+M_{21}&M_{22}&M_{23}\\ 
+M_{31}&M_{32}&M_{33}\\ 
+\end{vmatrix}
+$$
+
+
+
+> ​	$M^{\{i,j\}}$ , denote the a $(n-1)\cross(n-1)$ matrix which delete $i$-th row and $j$-column from original matrix M.  e.g.:
+
+$$
+M=
+\begin{bmatrix}
+1&2&3\\
+4&5&6\\
+7&8&9\\
+\end{bmatrix}
+\\
+M^{\{2,3\}}=
+\begin{bmatrix}
+1&2\\
+7&8\\
+\end{bmatrix}
+$$
+
+
+
+> ​	:star:**Definition 3.16.** Let $M$ be an $n\cross n$ matrix. We define the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ as follows.
+
+$$
+C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}
+$$
 
