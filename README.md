@@ -135,19 +135,49 @@ $$
 
 An $n\cross n$ matrix $M$ is *invertible* if and only if the columns of $M$ form a **linearly independent set**. Equivalently, $M$ is invertible if and only if $\text{det}M≠0$ .
 
-
+The entries of the inverse $G$ of an $n\cross n$ matrix $F$ can be calculated by using the explicit formula
+$$
+G_{ij} = \frac{C_{ji}(F)}{\text{det}F}
+$$
+Therefore, a $2\cross 2$ matrix $A$ is given by
+$$
+A^{-1}=\frac{1}{\text{det}A}\begin{bmatrix}A_{22}&-A_{12}\\-A_{21}&A_{11}\end{bmatrix}
+$$
+Notice the negative sign in $A_{12}$ and $A_{21}$. That is because $C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}$. $1+2$ and $2+1$ are odd, so $(-1)$ is still negative.
 
 
 
 :pushpin: **Eigenvalues and Eigenvectors**
 
+The eigenvalues of an $n\cross n$ matrix $M$ are equal to the roots of the characteristic polynomial given by
+$$
+\text{det}(M-\lambda I)
+$$
+An eigenvector $V$ associated with the eigenvalue $λ$ of the matrix $M$ is given by the solution to the homogeneous linear system
+$$
+(M-λI)V= 0
+$$
+The eigenvalues of a real symmetric matrix are real, and the eigenvectors corresponding to distinct eigenvalues of a real symmetric matrix are orthogonal.
+
 
 
 :pushpin: **Diagonalization**
 
-
-
-
+If $V_1,V_2,...,V_n$ are linearly independent eigenvectors of an $n\cross n$ matrix $M$, then the matrix $A$ given by
+$$
+A = \begin{bmatrix} V_1&V_2&...&V_n\end{bmatrix}
+$$
+diagonalizes $M$, meaning that 
+$$
+A^{−1}MA=
+\begin{bmatrix}
+\lambda_1&0&\cdots&0\\
+0&\lambda_2&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&\lambda_n\\
+\end{bmatrix}
+$$
+where $\lambda_1,\lambda_2,...,\lambda_n$ are the eigenvalues of $M$.
 
 
 # Chapter 2 Vector
@@ -896,7 +926,11 @@ MV_i-\lambda_iIV_i&=0\\
 \end{align}
 $$
 
-​	Because $V_i$ is nonzero. Therefore, $M-\lambda_iI$ must be **singular**. Therefore, the equation is:
+(Tips) Because $\lambda$ is a scalar, the objective is to do arithmetic operation with $M$, therefore, $\lambda$ has to multiply $I$ becomes a matrix.
+
+
+
+Because $V_i$ is nonzero. Therefore, $M-\lambda_iI$ must be **singular**. Therefore, the equation is:
 $$
 \text{det}(M-\lambda_iI)=0
 $$
