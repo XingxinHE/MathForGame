@@ -80,6 +80,75 @@ $$
 
 
 
+## 3. Matrices
+
+:pushpin: **Matrix Products**
+
+If there are matrices $F$($n\cross m_1$) and $G(m_2\cross p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. Then the product is a matrix with shape $n\cross p$. The $i,j$ element of the matrix is:
+$$
+(FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
+$$
+
+
+:pushpin: **Determinants**
+
+The determinant of an $n\cross n$ matrix $M$ is given by the formulas
+
+
+
+the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ a
+$$
+\begin{align}
+\text{det}M =& \sum^{n}_{i=1}M_{ik}C_{ik}(M)\\
+
+\text{and}\\
+
+\text{det}M =& \sum^{n}_{j=1}M_{kj}C_{kj}(M)\\\\
+
+\text{where }C_{ij}(M)\text{ is the cofactor of }M_{ij}\text{defined by}\\
+C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}\\\\\\
+
+\text{Example of determinant of 2*2 and 3*3 matrix}\\\\
+
+\text{ det}\bigg(\begin{bmatrix}a&b\\c&d\end{bmatrix}\bigg) =& ad-bc
+
+\\
+
+\text{det}
+\Bigg(
+\begin{bmatrix}
+a&b&c\\
+d&e&f\\
+g&h&i
+\end{bmatrix}
+\Bigg)
+=&a\text{ det}\bigg(\begin{bmatrix}e&f\\h&i\end{bmatrix}\bigg)\\
+-&b\text{ det}\bigg(\begin{bmatrix}d&f\\g&i\end{bmatrix}\bigg)\\
++&c\text{ det}\bigg(\begin{bmatrix}d&e\\g&h\end{bmatrix}\bigg)\\
+\end{align}
+$$
+
+
+
+
+:pushpin: **Matrix Inverse**
+
+An $n\cross n$ matrix $M$ is *invertible* if and only if the columns of $M$ form a **linearly independent set**. Equivalently, $M$ is invertible if and only if $\text{det}M≠0$ .
+
+
+
+
+
+:pushpin: **Eigenvalues and Eigenvectors**
+
+
+
+:pushpin: **Diagonalization**
+
+
+
+
+
 
 # Chapter 2 Vector
 
@@ -690,6 +759,16 @@ $$
 
 ## 3.4 Determinant
 
+> ​	:star:**Geometrical Big Picture**:  The *determinant* of a matrix tell you how much the linear transformation is.
+
+e.g. 
+
+In 2D, the determinant is how much does the **area** of unit $1\cross1$ square change?
+
+In 3D, the determinant is how much does the **volume** of unit $1\cross1\cross1$ cube change?
+
+
+
 > ​	$\text{det}M$:	The **determinant** of a square matrix is a scalar quantity derived from the entries of the matrix.
 
 $$
@@ -728,4 +807,229 @@ $$
 $$
 C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}
 $$
+
+
+
+> ​	:star: **Calculation of determinant**: 
+
+$$
+\begin{align}
+\text{det}
+\Bigg(
+\begin{bmatrix}
+a&b&c\\
+d&e&f\\
+g&h&i
+\end{bmatrix}
+\Bigg)
+=&a\text{ det}\bigg(\begin{bmatrix}e&f\\h&i\end{bmatrix}\bigg)\\
+-&b\text{ det}\bigg(\begin{bmatrix}d&f\\g&i\end{bmatrix}\bigg)\\
++&c\text{ det}\bigg(\begin{bmatrix}d&e\\g&h\end{bmatrix}\bigg)\\
+\end{align}
+$$
+
+Therefore, it is a **recursively** process.
+
+
+
+> ​	:pencil: **Theorem 3.17.** Performing elementary row operations on a matrix has the following effects on the determinant of that matrix. 
+
+- (a) Exchanging two rows **negates** the determinant. 
+
+- (b) Multiplying a row by $a$ scalar a **multiplies** the determinant by $a$. 
+
+- (c) Adding a multiple of one row to another row has no effect on the determinant.
+
+
+
+> ​	:leftwards_arrow_with_hook:  **Corollary 3.18.** The determinant of a matrix having two identical rows is zero.
+
+This is easy to understand geometrically. The rows in transpose are the column. The identical columns means they are linear dependent. How much the linear transformation is would be zero.
+
+
+
+>​	:pencil:**Theorem 3.19.** An $n\cross n$ matrix $M$ is invertible if and only if $\text{det}M≠0$ .
+
+
+
+> ​	:pencil:**Theorem 3.20.** For any two $n\cross n$ matrices $F$ and $G$, $\text{det}FG=\text{det}F\text{det}G$.
+
+
+
+> ​	:pencil: **Theorem 3.21.** Let $F$ be an $n\cross n$ matrix and define the entries of an $n\cross n$ matrix $G$ using the formula
+
+$$
+G_{ij} = \frac{C_{ij}(F)}{\text{det}F}
+$$
+
+> where $C_{ij}(F)$ is the cofactor of $(F^T)_{ij}$. Then $G=F^{-1}$
+
+
+
+
+
+## 3.5 Eigenvalues and Eigenvectors
+
+> ​	:star:**Big picture**: Eigenvector multiplied by the matrix, it was changed only in **magnitude** and not in **direction**.
+
+For an $n\cross n$ matrix $M$, there exist *nonzero* $n$-dimensional vectors $V_1,V_2,..,V_n$ such that
+$$
+MV_i=\lambda_iV_i
+$$
+Then, we have
+
+$\lambda_i$ , **eigenvalues** of matrix $M$
+
+$V_i$, **eigenvectors** of matrix $M$
+
+**characteristic polynomial** , is the **degree** $n$ polynomial in $\lambda_{i}$. The roots of this polynomial yield the eigen-values of the matrix $M$
+
+
+
+> ​	Formula of eigenvalues
+
+$$
+\begin{align}
+MV_i&=\lambda_iV_i\\
+MV_i-\lambda_iIV_i&=0\\
+(M-\lambda_iI)V_i&=0
+\end{align}
+$$
+
+​	Because $V_i$ is nonzero. Therefore, $M-\lambda_iI$ must be **singular**. Therefore, the equation is:
+$$
+\text{det}(M-\lambda_iI)=0
+$$
+e.g. Calculate the determinant of following matrix
+$$
+\begin{align}
+M&=
+\begin{bmatrix}
+1&1\\
+3&-1
+\end{bmatrix}
+\\
+M-\lambda I &= 
+\begin{bmatrix}
+1&1\\
+3&-1
+\end{bmatrix}
+-\lambda
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+1-\lambda&1\\
+3&-1-\lambda
+\end{bmatrix}\\
+\text{det}(M-\lambda I)&=(1-\lambda)(-1-\lambda)-3=0\\
+&=\lambda^2-4=0\\
+\end{align}
+$$
+Therefore, we have eigenvalues as followed.
+$$
+\lambda_1=-2,\lambda_2=2
+$$
+Take the values above into the equation
+$$
+\begin{align}
+M-\lambda I
+&=
+\begin{bmatrix}
+1-\lambda&1\\
+3&-1-\lambda
+\end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+1-(±2)&1\\
+3&-1-(±2)
+\end{bmatrix}
+\\
+\text{and}\\
+(M-\lambda I)V
+&=0
+\\
+\text{so we have...}\\
+\begin{bmatrix}
+-1&1\\
+3&-3
+\end{bmatrix}V_1 &=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}
+\\
+\begin{bmatrix}
+3&1\\
+3&1
+\end{bmatrix}V_2 &=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}
+\end{align}
+$$
+As you might notice, the result of $V_1$ and $V_2$ are infinite. If desired, we should choose the eigenvector has **unit length**.
+$$
+\begin{align}
+V_1&=a\begin{bmatrix}1\\1\end{bmatrix}
+\\
+V_2&=b\begin{bmatrix}1\\-3\end{bmatrix}
+\end{align}
+$$
+
+> ​	:star:**Definition 3.24.** An $n\cross n$ matrix $M$ is *symmetric* if and only if $M_{ij}= M_{ji}$  for all $i$ and $j$. That is, a matrix whose entries are symmetric about the main diagonal is called symmetric.
+
+
+
+> ​	:pencil: **Theorem 3.25.** The eigenvalues of a symmetric matrix $M$ having real entries are real numbers.
+
+
+
+> ​	:pencil: **Theorem 3.26.** Any two eigenvectors associated with distinct eigenvalues of a symmetric matrix $M$ are orthogonal.
+
+
+
+
+
+## 3.6 Diagonalization
+
+> ​	Definition: if we can find a matrix $A$ such that $A^{-1}MA$ is a diagonal matrix, then we say that $A$ ***diagonalizes*** $M$.
+
+
+
+> ​	:bulb:  **Big Picture** : any $n\cross n$ matrix for which we can find $n$  *linearly independent eigenvectors* can be **diagonalized**.
+
+
+
+> ​	:pencil: **Theorem 3.27.** Let $M$ be an $n\cross n$ matrix having eigenvalues $λ_1,λ_2,...,λ_n$ , and suppose that there exist corresponding eigenvectors $V_1,V_2,...,V_n$ that form a linearly independent set. Then the matrix $A$ given by
+
+$$
+A=
+\begin{bmatrix}
+V_1&V2&\cdots&V_n
+\end{bmatrix}
+$$
+
+> (i.e., the columns of the matrix $A$ are the eigenvectors $V_1,V_2,...,V_n$ diagonalizes $M$, and the main diagonal entries of the product $A^{−1}MA$ are the eigenvalues of $M$:
+
+$$
+A^{−1}MA=
+\begin{bmatrix}
+\lambda_1&0&\cdots&0\\
+0&\lambda_2&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&\lambda_n\\
+\end{bmatrix}
+$$
+
+> Conversely, if there exists an invertible matrix $A$ such that $A^{-1}MA$ is a diagonal matrix, then the columns of $A$ must be eigenvectors of $M$, and the main diagonal entries of $A^{-1}MA$ are the corresponding eigenvalues of $M$.
+
+
+
+e.g.
 
