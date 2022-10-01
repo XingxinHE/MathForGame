@@ -49,10 +49,6 @@ $$
 
 :pushpin:**Cross Products**
 
-The cross product between two 3D vectors $P$ and $Q $is a 3D vector defined by
-$$
-P\times Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
-$$
 This can also be written as the **matrix-vector product**
 $$
 P\times Q=
@@ -202,48 +198,6 @@ This is very easy to understand. The dot product between a vector and its *ortho
 
 
 
-> ​	:pencil: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\times Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
-
-$$
-\norm{P\times Q}=\norm{P}\norm{Q}\sin{a}
-$$
-
-> ​	:pushpin:**Right hand rule**: The cross product is with orientation.
-
-<img src="img/image-20210821193945570.png" alt="image-20210821193945570" style="zoom:50%;" />
-
-> ​	⭐ **Area of cross product**: it is the **parallelogram** formed by $P$ and $Q$.
-
-$$
-\text{Area} = \norm{Q}\cdot\norm{P}\sin{a}=\text{base}\times\text{height}=P\times Q
-$$
-
-
-
-<img src="img/image-20210821194922823.png" alt="image-20210821194922823" style="zoom: 67%;" />
-
-
-
-> ​	:pencil: **Theorem 2.9.** Given any two scalars $a$ and $b$, and any three 3D vectors $P$, $Q$, and $R$, the following properties hold.
-
-$$
-Q\times P = -(P\times Q)\\
-(aP)\times Q = a(P\times Q)\\
-P\times(Q+R)=P\times Q+P\times R\\
-P\times P = 0 = \langle0,0,0\rangle\\
-(P\times Q)\cdot R = (R\times P)\cdot Q = (Q\times R)\cdot P\\
-P\times(Q\times P) = P\times Q\times P = P^2Q - (P\cdot Q)P
-$$
-
-
-
-> ​	:pushpin: **Anticommutative**, is a characteristic of cross product which implies the **order** of cross product matters.
-
-$$
-(P\times Q)\times R \neq P\times (Q\times R)
-$$
-
-
 
 
 
@@ -326,39 +280,7 @@ $$
 
 # Chapter 3 Matrices
 
-⭐ **Big picture**: It means to cover calculation between different Cartesian coordinate spaces.
-
 ## 3.1 Matrix Properties
-
-> ​	**Basic representation** of a matrix:
-
-$$
-M_{ij} = \begin{bmatrix}
-F_{11}&F_{12}&F_{13}&F_{14}\\
-F_{21}&F_{22}&F_{23}&F_{24}\\
-F_{31}&F_{32}&F_{33}&F_{34}\\
-\end{bmatrix}
-$$
-
-where $i$ and $j$ represents **$i$-th row of the $j$-th column**. In this case, $i=3,j=4$
-
-
-
-
-
-> ​	**Transpose** of a matrix:
-
-$$
-M_{ij}^T = 
-\begin{bmatrix}
-F_{11}&F_{21}&F_{31}\\
-F_{12}&F_{22}&F_{32}\\
-F_{13}&F_{23}&F_{33}\\
-F_{14}&F_{24}&F_{34}\\
-\end{bmatrix}
-$$
-
-
 
 > ​	⭐**Matrix multiplication**: suppose 2 matrices $F$($n\times m_1$) and $G(m_2\times p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. The shape of output matrix is $n\times p$. The $i,j$ element of the matrix is:
 
@@ -385,25 +307,6 @@ $$
 M_{22}=\begin{bmatrix}3&0&1\end{bmatrix}\begin{bmatrix}2\\0\\2\end{bmatrix}
 $$
 
-> ​	:pencil:**Theorem 3.1.** Given any two scalars a and b and any three nm× matrices F, G, and H, the following properties hold.
-
-$$
-F+G=G+F\\
-(F+G)+H = F+(G+H)\\
-a(bF)=(ab)F\\
-a(F+G) = aF+aG\\
-(a+b)F = aF+bF
-$$
-
-
-
-> ​	:pencil:**Theorem 3.2.** Given any scalar $a$, an $n\times m$ matrix $F$, an $m\times p$ matrix $G$, and a $p\times q$ matrix $H$, the following properties hold.
-
-$$
-(aF)G = a(FG)\\
-(FG)H = F(GH)\\
-(FG)^T = G^TF^T
-$$
 
 
 
