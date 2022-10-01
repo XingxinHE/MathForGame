@@ -51,11 +51,11 @@ $$
 
 The cross product between two 3D vectors $P$ and $Q $is a 3D vector defined by
 $$
-P\cross Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
+P\times Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
 $$
 This can also be written as the **matrix-vector product**
 $$
-P\cross Q=
+P\times Q=
 \begin{bmatrix}
 0&-P_z&P_y\\
 P_z&0&-P_x\\
@@ -67,7 +67,7 @@ Q_x\\Q_y\\Q_z
 $$
 The **magnitude** of the cross product is related to the **angle** $a$ between the vectors $P$ and $Q$ by the formula
 $$
-\norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
+\norm{P\times Q}=\norm{P}\norm{Q}\sin{a}
 $$
 
 
@@ -84,7 +84,7 @@ $$
 
 :pushpin: **Matrix Products**
 
-If there are matrices $F$($n\cross m_1$) and $G(m_2\cross p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. Then the product is a matrix with shape $n\cross p$. The $i,j$ element of the matrix is:
+If there are matrices $F$($n\times m_1$) and $G(m_2\times p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. Then the product is a matrix with shape $n\times p$. The $i,j$ element of the matrix is:
 $$
 (FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
 $$
@@ -92,7 +92,7 @@ $$
 
 :pushpin: **Determinants**
 
-The determinant of an $n\cross n$ matrix $M$ is given by the formulas
+The determinant of an $n\times n$ matrix $M$ is given by the formulas
 
 
 
@@ -133,13 +133,13 @@ $$
 
 :pushpin: **Matrix Inverse**
 
-An $n\cross n$ matrix $M$ is *invertible* if and only if the columns of $M$ form a **linearly independent set**. Equivalently, $M$ is invertible if and only if $\text{det}M≠0$ .
+An $n\times n$ matrix $M$ is *invertible* if and only if the columns of $M$ form a **linearly independent set**. Equivalently, $M$ is invertible if and only if $\text{det}M≠0$ .
 
-The entries of the inverse $G$ of an $n\cross n$ matrix $F$ can be calculated by using the explicit formula
+The entries of the inverse $G$ of an $n\times n$ matrix $F$ can be calculated by using the explicit formula
 $$
 G_{ij} = \frac{C_{ji}(F)}{\text{det}F}
 $$
-Therefore, a $2\cross 2$ matrix $A$ is given by
+Therefore, a $2\times 2$ matrix $A$ is given by
 $$
 A^{-1}=\frac{1}{\text{det}A}\begin{bmatrix}A_{22}&-A_{12}\\-A_{21}&A_{11}\end{bmatrix}
 $$
@@ -149,7 +149,7 @@ Notice the negative sign in $A_{12}$ and $A_{21}$. That is because $C_{ij}(M)\eq
 
 :pushpin: **Eigenvalues and Eigenvectors**
 
-The eigenvalues of an $n\cross n$ matrix $M$ are equal to the roots of the characteristic polynomial given by
+The eigenvalues of an $n\times n$ matrix $M$ are equal to the roots of the characteristic polynomial given by
 $$
 \text{det}(M-\lambda I)
 $$
@@ -163,7 +163,7 @@ The eigenvalues of a real symmetric matrix are real, and the eigenvectors corres
 
 :pushpin: **Diagonalization**
 
-If $V_1,V_2,...,V_n$ are linearly independent eigenvectors of an $n\cross n$ matrix $M$, then the matrix $A$ given by
+If $V_1,V_2,...,V_n$ are linearly independent eigenvectors of an $n\times n$ matrix $M$, then the matrix $A$ given by
 $$
 A = \begin{bmatrix} V_1&V_2&...&V_n\end{bmatrix}
 $$
@@ -182,182 +182,18 @@ where $\lambda_1,\lambda_2,...,\lambda_n$ are the eigenvalues of $M$.
 
 # Chapter 2 Vector
 
-## 2.1 Vector Properties
-
-> ​	$n$-dimensional vector $V$:
-
-$$
-V = \langle V_1,V_2,...,V_N\rangle
-$$
-
-
-
-> ​	vector $V$ (**column picture**) represented by a matrix with 1 column and $n$ rows:
-
-$$
-V = \begin{bmatrix}V_1\\V_2\\\vdots\\V_n\end{bmatrix}
-$$
-
-
-
-> ​	vector $V$ (**row picture**) ,the transpose of their corresponding column vectors:
-
-$$
-V^T = [V_1\quad V_2\quad \cdots\quad  V_n ]
-$$
-
-
-
-> ​	scalar($a$) multiply vector($V$):
-
-$$
-aV = Va =\langle aV_1, aV_2,..., aV_n\rangle
-$$
-
-
-
-> ​	vector($P$) + vector($Q$):     (element-wise operation)
-
-$$
-P+Q=\langle P_1+Q_1,P_2+Q_2,..., P_n+Q_n\rangle
-$$
-
-
-
-> ​	 $\norm{V}$ ,**magnitude/norm** of an $n$-dimensional vector $V$ is a **scalar**.
-
-$$
-\norm{V} = \sqrt{\sum^{n}_{i=1}{V_i^2}}
-$$
-
-
-
-> ​	$\norm{V}$ ,is also the **unit length**. A vector having a magnitude/ norm is said to be a **unit vector**.
->
-> ​	Taking the 3-dimensional vector as an example, 
-
-$$
-\norm{V}=\sqrt{V_x^2+V_y^2+V_z^2}
-$$
-
-
-
-> ​	**vector normalization**: 
->
-> ​		$V$ multiply $\frac{1}{\norm{V}}$
 
 
 
 
-
-## 2.2 Dot Product
-
-:star: Big picture of its application: it **measure the difference** between the directions in which the two vectors point.
-
-> ​	**dot product** of two vectors, also known as the **scalar product** or **inner product**
->
-> ​	Definition: The dot product of two $n$-dimensional vectors $P$ and $Q$, is the **scalar** quantity given by the formula.
-
-$$
-P\cdot Q=\sum^{n}_{i=1}P_iQ_i
-$$
-
-> ​	dot product is **element-wise** operation
-
-$$
-P\cdot Q=P_1\cdot Q_1+P_2\cdot Q_2+...+P_n\cdot Q_n
-$$
-
-> ​	dot product represented in matrix format
->
-> ​	tips: row vector * column vector = scalar
-
-$$
-P^T\cdot Q=[P_1\quad P_2\quad...\quad P_n]\begin{bmatrix}Q_1\\Q_2\\\vdots\\Q_n\end{bmatrix}
-$$
-
-
-
-> ​	:pencil: **Theorem**: Given two $n$-dimensional vectors $P$ and $Q$, the dot product $P\cdot Q$ satisfies the equation. $a$ is the angle between $P$ and $Q$.
-
-$$
-P\cdot Q = \norm{P}\norm{Q}\cos{a}
-$$
-
-> ​	:pushpin: **Fact**:  in light of theorem: if two vector $P\cdot Q=0$, they are **orthogonal**.
-
-> ​	:pushpin: **Fact**:  $P\cdot Q>0$, they are **on the same side**.  $P\cdot Q<0$, they are **on the opposite side**.
-
-
-
-> ​	:pencil: **Theorem**: Given any scalar $a$ and any three vectors $P, Q$, and $R$, the following properties hold.
-
-$$
-\begin{align}
-P\cdot Q&= Q\cdot P \\
-(aP)\cdot Q&=a(P\cdot Q)\\
-P\cdot(Q+R)&= P\cdot Q+ P\cdot R\\
-P\cdot P&=\norm{P}^2\\
-|P\cdot Q|&\leq \norm{P}\norm{Q}
-\end{align}
-$$
-
-
-
-> ​	:pushpin: **Projection**: for a vector $P$ projected onto $Q$ can be denoted as
->
-> ​	:pushpin:**Perpendicular**: the projection perpendicular to original vector
-
-$$
-\begin{align}
-\text{proj}_QP &= \frac{P\cdot Q}{\norm{Q}^2}Q\\\\
-\text{perp}_QP &= P-\text{proj}_QP\\
-&=P-\frac{P\cdot Q}{\norm{Q}^2}Q
-\end{align}
-$$
-
-
-
-![](img/vector_proj_perp.png)
 
 ## 2.3 Cross Product
-
-:star: Big Picture: **calculates surface normal** at a particular point given two distinct tangent vectors.
-
-> ​	**cross product** is also known as **vector product** which **returns a vector** rather than an scalar.
-
-
-
-> ​	**Definition** 2.6. The cross product of two 3D vectors $P$ and $Q$, written as $P\cross Q$, is a vector quantity given by the formula
-
-$$
-P\cross Q = \langle P_yQ_z-P_zQ_y,\space P_zQ_x-P_xQ_z,\space P_xQ_y-P_yQ_x\rangle
-$$
-
-> ​	cross product in **matrix picture**(also known as **pseudodeterminant**), where $i,j,k$ are unit vector:
-
-$$
-P\cross Q = 
-\begin{vmatrix}
-\bold{i}&\bold{j}&\bold{k}\\
-P_x&P_y&P_z\\
-Q_x&Q_y&Q_z
-\end{vmatrix}\\\\
-i=\langle1,0,0\rangle\\
-j=\langle0,1,0\rangle\\
-k=\langle0,0,1\rangle\\
-$$
-
-<img src="img/pseudodeterminant.jpg" alt="pseudodeterminant" style="zoom: 67%;" />
-
-:bangbang: **Attention:** the sign in front of $j$ is **negative**! Others are positive.
-
 
 
 > ​	:pencil:**Theorem 2.7.** Let $P$ and $Q$ be any two 3D vectors. Then:
 
 $$
-(P\cross Q)\cdot P=0\\(P\cross Q)\cdot Q=0
+(P\times Q)\cdot P=0\\(P\times Q)\cdot Q=0
 $$
 
 
@@ -366,20 +202,20 @@ This is very easy to understand. The dot product between a vector and its *ortho
 
 
 
-> ​	:pencil: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\cross Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
+> ​	:pencil: **Theorem 2.8.** Given two 3D vectors $P$ and $Q$, the cross product $P\times Q$ satisfies the equation. where $a$ is  the **planar angle** between the lines connecting the origin to the points represented by $P$ and $Q$.
 
 $$
-\norm{P\cross Q}=\norm{P}\norm{Q}\sin{a}
+\norm{P\times Q}=\norm{P}\norm{Q}\sin{a}
 $$
 
 > ​	:pushpin:**Right hand rule**: The cross product is with orientation.
 
 <img src="img/image-20210821193945570.png" alt="image-20210821193945570" style="zoom:50%;" />
 
-> ​	:star: **Area of cross product**: it is the **parallelogram** formed by $P$ and $Q$.
+> ​	⭐ **Area of cross product**: it is the **parallelogram** formed by $P$ and $Q$.
 
 $$
-\text{Area} = \norm{Q}\cdot\norm{P}\sin{a}=\text{base}\cross\text{height}=P\cross Q
+\text{Area} = \norm{Q}\cdot\norm{P}\sin{a}=\text{base}\times\text{height}=P\times Q
 $$
 
 
@@ -391,12 +227,12 @@ $$
 > ​	:pencil: **Theorem 2.9.** Given any two scalars $a$ and $b$, and any three 3D vectors $P$, $Q$, and $R$, the following properties hold.
 
 $$
-Q\cross P = -(P\cross Q)\\
-(aP)\cross Q = a(P\cross Q)\\
-P\cross(Q+R)=P\cross Q+P\cross R\\
-P\cross P = 0 = \langle0,0,0\rangle\\
-(P\cross Q)\cdot R = (R\cross P)\cdot Q = (Q\cross R)\cdot P\\
-P\cross(Q\cross P) = P\cross Q\cross P = P^2Q - (P\cdot Q)P
+Q\times P = -(P\times Q)\\
+(aP)\times Q = a(P\times Q)\\
+P\times(Q+R)=P\times Q+P\times R\\
+P\times P = 0 = \langle0,0,0\rangle\\
+(P\times Q)\cdot R = (R\times P)\cdot Q = (Q\times R)\cdot P\\
+P\times(Q\times P) = P\times Q\times P = P^2Q - (P\cdot Q)P
 $$
 
 
@@ -404,7 +240,7 @@ $$
 > ​	:pushpin: **Anticommutative**, is a characteristic of cross product which implies the **order** of cross product matters.
 
 $$
-(P\cross Q)\cross R \neq P\cross (Q\cross R)
+(P\times Q)\times R \neq P\times (Q\times R)
 $$
 
 
@@ -413,7 +249,7 @@ $$
 
 ## 2.4 Vector Space
 
-> ​	:star: **Definition 2.10.** A vector space is a set $V$, whose elements are called vectors, for which addition and scalar multiplication are defined, and the following properties hold.
+> ​	⭐ **Definition 2.10.** A vector space is a set $V$, whose elements are called vectors, for which addition and scalar multiplication are defined, and the following properties hold.
 
 - $P\in V,\space Q\in V, \quad \text{s.t.  }P+Q\in V$
 - $P\in V, a\in \mathbb{R}, \text{  s.t.  }aP\in V$
@@ -426,7 +262,7 @@ $$
 
 
 
-> ​	:star:**Definition 2.11.** A set of $n$ vectors  $\{e_1,e_2,...,e_n\}$ is **linearly independent** if there **do not exist** real number $a_1,a_2,...,a_n$ where at least one of the $a_i$ is not zero, such that
+> ​	⭐**Definition 2.11.** A set of $n$ vectors  $\{e_1,e_2,...,e_n\}$ is **linearly independent** if there **do not exist** real number $a_1,a_2,...,a_n$ where at least one of the $a_i$ is not zero, such that
 
 $$
 a_1e_1+a_2e_2+\cdots+a_ne_n=0
@@ -436,7 +272,7 @@ $$
 
 
 
-> ​	:star:**Definition 2.13.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called orthogonal if for every pair $(i,j)$ with $i\neq j$, we have:
+> ​	⭐**Definition 2.13.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called orthogonal if for every pair $(i,j)$ with $i\neq j$, we have:
 
 $$
 e_i\cdot e_j=0
@@ -482,7 +318,7 @@ $$
 
 - D. If $i<n$, $i++$, back to step C.
 
-:star:Big picture of Gram-Schmidt Orthogonalization: it **alternates coordinate systems.**
+⭐Big picture of Gram-Schmidt Orthogonalization: it **alternates coordinate systems.**
 
 
 
@@ -490,7 +326,7 @@ $$
 
 # Chapter 3 Matrices
 
-:star: **Big picture**: It means to cover calculation between different Cartesian coordinate spaces.
+⭐ **Big picture**: It means to cover calculation between different Cartesian coordinate spaces.
 
 ## 3.1 Matrix Properties
 
@@ -524,7 +360,7 @@ $$
 
 
 
-> ​	:star:**Matrix multiplication**: suppose 2 matrices $F$($n\cross m_1$) and $G(m_2\cross p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. The shape of output matrix is $n\cross p$. The $i,j$ element of the matrix is:
+> ​	⭐**Matrix multiplication**: suppose 2 matrices $F$($n\times m_1$) and $G(m_2\times p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. The shape of output matrix is $n\times p$. The $i,j$ element of the matrix is:
 
 $$
 (FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
@@ -561,7 +397,7 @@ $$
 
 
 
-> ​	:pencil:**Theorem 3.2.** Given any scalar $a$, an $n\cross m$ matrix $F$, an $m\cross p$ matrix $G$, and a $p\cross q$ matrix $H$, the following properties hold.
+> ​	:pencil:**Theorem 3.2.** Given any scalar $a$, an $n\times m$ matrix $F$, an $m\times p$ matrix $G$, and a $p\times q$ matrix $H$, the following properties hold.
 
 $$
 (aF)G = a(FG)\\
@@ -621,7 +457,7 @@ $$
 
 
 
-> ​	:star:**Definition 3.3. Elementary row operation**: It is one of the following three operations that can be performed on a matrix
+> ​	⭐**Definition 3.3. Elementary row operation**: It is one of the following three operations that can be performed on a matrix
 
 1. exchange 2 rows
 2. multiply a row by a nonzero scalar
@@ -631,7 +467,7 @@ $$
 
 
 
-> ​	:star: **Definition 3.4.** A matrix is in **reduced form** if and only if it satisfies the following conditions.
+> ​	⭐ **Definition 3.4.** A matrix is in **reduced form** if and only if it satisfies the following conditions.
 
 1. For every nonzero row, the leftmost nonzero entry, called the leading entry, is 1.
 2. Every nonzero row precedes every row of zeros. That is, all rows of zeros reside at the bottom of the matrix.
@@ -683,7 +519,7 @@ $$
 
 
 
-> ​	:computer: **Algorithm 3.6.** This algorithm transforms an $n\cross(n+1)$ augmented matrix $M$ representing a linear system into its reduced form. At each step, $M$ refers to the *current state* of the matrix, *not the original state*.
+> ​	:computer: **Algorithm 3.6.** This algorithm transforms an $n\times(n+1)$ augmented matrix $M$ representing a linear system into its reduced form. At each step, $M$ refers to the *current state* of the matrix, *not the original state*.
 
 - A. Set the row $i$ equal to 1.
 - B. Set the column $j$ equal to 1. We will loop through columns 1 to $n$.
@@ -704,13 +540,13 @@ $$
 
 ## 3.3 Matrix Inverse
 
-> ​	:star: **Invertible** : A matrix $M^{-1}$ is the *inverse* of $M$, such that - 
+> ​	⭐ **Invertible** : A matrix $M^{-1}$ is the *inverse* of $M$, such that - 
 
 $$
 MM^{-1} = M^{-1}M=1
 $$
 
-> ​	:star:**Singular**: Matrix is not *invertible*.
+> ​	⭐**Singular**: Matrix is not *invertible*.
 
 
 
@@ -723,15 +559,15 @@ $$
 
 
 
-> ​	:pencil:**Theorem 3.11.** If $F$ and $G$ are $n\cross n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
+> ​	:pencil:**Theorem 3.11.** If $F$ and $G$ are $n\times n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
 
 
 
 > ​	:pushpin: **Gauss-Jordan Elimination** : It is used to **transform a matrix into its reduced form.** But it can also be used to calculate the inverse of a matrix.
 
-For an $n\cross n\text{  matrix } M,$ 
+For an $n\times n\text{  matrix } M,$ 
 
-- A. construct an $n\cross 2n\text{  matrix } \tilde{M},$
+- A. construct an $n\times 2n\text{  matrix } \tilde{M},$
 - B. concatenating the identity matrix to the right of $\tilde{M}$,   (as shown below).
 
 $$
@@ -755,9 +591,9 @@ $$
 
 $$
 \begin{align}
-&M\quad\cross&I\\
+&M\quad\times&I\\
 &\Downarrow&\Downarrow\\
-&I\quad\cross&M^{-1}\\
+&I\quad\times&M^{-1}\\
 \end{align}
 $$
 
@@ -765,7 +601,7 @@ $$
 
 
 
-> ​	:computer: **Algorithm 3.12.** Gauss-Jordan Elimination. This algorithm calculates the **inverse** of an $n\cross n$ matrix $M$.
+> ​	:computer: **Algorithm 3.12.** Gauss-Jordan Elimination. This algorithm calculates the **inverse** of an $n\times n$ matrix $M$.
 
 - A. Construct the augmented matrix $\tilde{M}$ given in $\eqref{augmented matrix}$. Throughout this algorithm, $\tilde{M}$ refers to the current state of the augmented matrix, not the original state.
 - B. Set the column $j$ equal to 1. We will loop through columns 1 to $n$.
@@ -777,11 +613,11 @@ $$
 
 
 
-> ​	:pencil:**Theorem 3.14.** Let $M'$ be the $n\cross n$ matrix resulting from the performance of an elementary row operation on the $n\cross n$ matrix $M$. Then $M'=EM$, where $E$ is the $n\cross n$ matrix resulting from the same **elementary row operation** performed on the identity matrix.
+> ​	:pencil:**Theorem 3.14.** Let $M'$ be the $n\times n$ matrix resulting from the performance of an elementary row operation on the $n\times n$ matrix $M$. Then $M'=EM$, where $E$ is the $n\times n$ matrix resulting from the same **elementary row operation** performed on the identity matrix.
 
 
 
-> ​	:pencil:**Theorem 3.15.** An $n\cross n$ matrix $M$ is **invertible** if and only if the rows of $M$ **form a linearly independent set of vectors**.
+> ​	:pencil:**Theorem 3.15.** An $n\times n$ matrix $M$ is **invertible** if and only if the rows of $M$ **form a linearly independent set of vectors**.
 
 
 
@@ -789,13 +625,13 @@ $$
 
 ## 3.4 Determinant
 
-> ​	:star:**Geometrical Big Picture**:  The *determinant* of a matrix tell you how much the linear transformation is.
+> ​	⭐**Geometrical Big Picture**:  The *determinant* of a matrix tell you how much the linear transformation is.
 
 e.g. 
 
-In 2D, the determinant is how much does the **area** of unit $1\cross1$ square change?
+In 2D, the determinant is how much does the **area** of unit $1\times1$ square change?
 
-In 3D, the determinant is how much does the **volume** of unit $1\cross1\cross1$ cube change?
+In 3D, the determinant is how much does the **volume** of unit $1\times1\times1$ cube change?
 
 
 
@@ -813,7 +649,7 @@ $$
 
 
 
-> ​	$M^{\{i,j\}}$ , denote the a $(n-1)\cross(n-1)$ matrix which delete $i$-th row and $j$-column from original matrix M.  e.g.:
+> ​	$M^{\{i,j\}}$ , denote the a $(n-1)\times(n-1)$ matrix which delete $i$-th row and $j$-column from original matrix M.  e.g.:
 
 $$
 M=
@@ -832,7 +668,7 @@ $$
 
 
 
-> ​	:star:**Definition 3.16.** Let $M$ be an $n\cross n$ matrix. We define the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ as follows.
+> ​	⭐**Definition 3.16.** Let $M$ be an $n\times n$ matrix. We define the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ as follows.
 
 $$
 C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}
@@ -840,7 +676,7 @@ $$
 
 
 
-> ​	:star: **Calculation of determinant**: 
+> ​	⭐ **Calculation of determinant**: 
 
 $$
 \begin{align}
@@ -878,15 +714,15 @@ This is easy to understand geometrically. The rows in transpose are the column. 
 
 
 
->​	:pencil:**Theorem 3.19.** An $n\cross n$ matrix $M$ is invertible if and only if $\text{det}M≠0$ .
+>​	:pencil:**Theorem 3.19.** An $n\times n$ matrix $M$ is invertible if and only if $\text{det}M≠0$ .
 
 
 
-> ​	:pencil:**Theorem 3.20.** For any two $n\cross n$ matrices $F$ and $G$, $\text{det}FG=\text{det}F\text{det}G$.
+> ​	:pencil:**Theorem 3.20.** For any two $n\times n$ matrices $F$ and $G$, $\text{det}FG=\text{det}F\text{det}G$.
 
 
 
-> ​	:pencil: **Theorem 3.21.** Let $F$ be an $n\cross n$ matrix and define the entries of an $n\cross n$ matrix $G$ using the formula
+> ​	:pencil: **Theorem 3.21.** Let $F$ be an $n\times n$ matrix and define the entries of an $n\times n$ matrix $G$ using the formula
 
 $$
 G_{ij} = \frac{C_{ij}(F)}{\text{det}F}
@@ -900,9 +736,9 @@ $$
 
 ## 3.5 Eigenvalues and Eigenvectors
 
-> ​	:star:**Big picture**: Eigenvector multiplied by the matrix, it was changed only in **magnitude** and not in **direction**.
+> ​	⭐**Big picture**: Eigenvector multiplied by the matrix, it was changed only in **magnitude** and not in **direction**.
 
-For an $n\cross n$ matrix $M$, there exist *nonzero* $n$-dimensional vectors $V_1,V_2,..,V_n$ such that
+For an $n\times n$ matrix $M$, there exist *nonzero* $n$-dimensional vectors $V_1,V_2,..,V_n$ such that
 $$
 MV_i=\lambda_iV_i
 $$
@@ -1016,7 +852,7 @@ V_2&=b\begin{bmatrix}1\\-3\end{bmatrix}
 \end{align}
 $$
 
-> ​	:star:**Definition 3.24.** An $n\cross n$ matrix $M$ is *symmetric* if and only if $M_{ij}= M_{ji}$  for all $i$ and $j$. That is, a matrix whose entries are symmetric about the main diagonal is called symmetric.
+> ​	⭐**Definition 3.24.** An $n\times n$ matrix $M$ is *symmetric* if and only if $M_{ij}= M_{ji}$  for all $i$ and $j$. That is, a matrix whose entries are symmetric about the main diagonal is called symmetric.
 
 
 
@@ -1036,11 +872,11 @@ $$
 
 
 
-> ​	:bulb:  **Big Picture** : any $n\cross n$ matrix for which we can find $n$  *linearly independent eigenvectors* can be **diagonalized**.
+> ​	:bulb:  **Big Picture** : any $n\times n$ matrix for which we can find $n$  *linearly independent eigenvectors* can be **diagonalized**.
 
 
 
-> ​	:pencil: **Theorem 3.27.** Let $M$ be an $n\cross n$ matrix having eigenvalues $λ_1,λ_2,...,λ_n$ , and suppose that there exist corresponding eigenvectors $V_1,V_2,...,V_n$ that form a linearly independent set. Then the matrix $A$ given by
+> ​	:pencil: **Theorem 3.27.** Let $M$ be an $n\times n$ matrix having eigenvalues $λ_1,λ_2,...,λ_n$ , and suppose that there exist corresponding eigenvectors $V_1,V_2,...,V_n$ that form a linearly independent set. Then the matrix $A$ given by
 
 $$
 A=
