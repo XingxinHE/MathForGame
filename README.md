@@ -1,70 +1,8 @@
-# MathFor3DAndCG
-Study notes of Mathematics for `Lengyel, Eric. 3D Game Programming and Computer Graphics. 2011`
-
-
-
-# Notation Convention
-
-| Quantity/Operation | Notation/Examples                          |
-| ------------------ | ------------------------------------------ |
-| Scalars            | Italic letters: $x,t,A,a,\omega$           |
-| Angles             | Italic Greek letters: $\theta,\phi,a$      |
-| Vectors            | Boldface letters: $\bold{V, P, x, \omega}$ |
-| Quaternions        | Boldface letters: $\bold{q_1, q , q_2}$    |
-| Matrices           | Boldface letters: $\bold{M,P}$             |
-|                    |                                            |
-|                    |                                            |
-|                    |                                            |
-|                    |                                            |
-
-
-
 # Quick Reference
 
 ## 2. Vector
 
-:pushpin:**Dot Products**
-The dot product between two $n$-dimensional vectors $P$ and $Q$ is a **scalar** defined by
-$$
-P\cdot Q=\sum_{i=1}^{n}P_iQ_i=P_1\cdot Q_1+P_2\cdot Q_2+...+P_n\cdot Q_n
-$$
-The dot product is related to the **angle** $a$ between the vectors $P$ and $Q$ by the formula
-$$
-P\cdot Q = \norm{P}\norm{Q}\cos{a}
-$$
 
-
-:pushpin:**Vector Projections**
-
-The **projection** of a vector $P$ onto a vector $Q$ is given by
-$$
-\text{proj}_QP = \frac{P\cdot Q}{\norm{Q}^2}Q
-$$
-and the component of $P$ that is **perpendicular** to $Q$ is given by
-$$
-\text{perp}_QP &= P-\text{proj}_QP\\
-&=P-\frac{P\cdot Q}{\norm{Q}^2}Q
-$$
-
-
-:pushpin:**Cross Products**
-
-This can also be written as the **matrix-vector product**
-$$
-P\times Q=
-\begin{bmatrix}
-0&-P_z&P_y\\
-P_z&0&-P_x\\
--P_y&P_x&0
-\end{bmatrix}
-\begin{bmatrix}
-Q_x\\Q_y\\Q_z
-\end{bmatrix}
-$$
-The **magnitude** of the cross product is related to the **angle** $a$ between the vectors $P$ and $Q$ by the formula
-$$
-\norm{P\times Q}=\norm{P}\norm{Q}\sin{a}
-$$
 
 
 :pushpin:**Gram-Schmidt Orthogonalization**
@@ -77,13 +15,6 @@ $$
 
 
 ## 3. Matrices
-
-:pushpin: **Matrix Products**
-
-If there are matrices $F$($n\times m_1$) and $G(m_2\times p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. Then the product is a matrix with shape $n\times p$. The $i,j$ element of the matrix is:
-$$
-(FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
-$$
 
 
 :pushpin: **Determinants**
@@ -178,29 +109,6 @@ where $\lambda_1,\lambda_2,...,\lambda_n$ are the eigenvalues of $M$.
 
 # Chapter 2 Vector
 
-
-
-
-
-
-## 2.3 Cross Product
-
-
-> ​	:pencil:**Theorem 2.7.** Let $P$ and $Q$ be any two 3D vectors. Then:
-
-$$
-(P\times Q)\cdot P=0\\(P\times Q)\cdot Q=0
-$$
-
-
-
-This is very easy to understand. The dot product between a vector and its *orthogonal complement* is **ZERO** because they have nothing aligned.
-
-
-
-
-
-
 ## 2.4 Vector Space
 
 > ​	⭐ **Definition 2.10.** A vector space is a set $V$, whose elements are called vectors, for which addition and scalar multiplication are defined, and the following properties hold.
@@ -216,27 +124,7 @@ This is very easy to understand. The dot product between a vector and its *ortho
 
 
 
-> ​	⭐**Definition 2.11.** A set of $n$ vectors  $\{e_1,e_2,...,e_n\}$ is **linearly independent** if there **do not exist** real number $a_1,a_2,...,a_n$ where at least one of the $a_i$ is not zero, such that
 
-$$
-a_1e_1+a_2e_2+\cdots+a_ne_n=0
-$$
-
-> ​	otherwise, the set $\{e_1,e_2,...,e_n\}$ is called **linearly dependent.**
-
-
-
-> ​	⭐**Definition 2.13.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called orthogonal if for every pair $(i,j)$ with $i\neq j$, we have:
-
-$$
-e_i\cdot e_j=0
-$$
-
-
-
-> ​	:pencil:**Theorem 2.14.** Given two nonzero vectors $e_1$ and $e_2$ , if $e_1\cdot e_2=0$ , then $e_1$ and $e_2$ are **linearly independent**。
->
-> which is very easy to understand since they have nothing overlapped.
 
 
 
@@ -279,35 +167,6 @@ $$
 
 
 # Chapter 3 Matrices
-
-## 3.1 Matrix Properties
-
-> ​	⭐**Matrix multiplication**: suppose 2 matrices $F$($n\times m_1$) and $G(m_2\times p)$, **the prerequisite for a valid matrix multiplication is** that $m_1=m_2$. The shape of output matrix is $n\times p$. The $i,j$ element of the matrix is:
-
-$$
-(FG)_{ij} = \sum_{k=1}^{m}F_{ik}G_{kj}
-$$
-
-> ​	:bulb: Another picture of this: the $(i,j)$ entry of $FG$ is equal to the **dot product of the $i$-th row of $F$ and the $j$-th column of $G$**. e.g.
-
-```python
->>> import numpy as np
->>> F = np.array([[2,3,1],
-                  [3,0,1]])
->>> G = np.array([[1,2],
-                  [4,0],
-                  [3,2]])
->>> F@G
-array([[17,  6],
-       [ 6,  8]])
-```
-
-The `2,2` element of output matrix is the dot product of $2$-th row of $F$ and $2$-th colomn of $G$ 
-$$
-M_{22}=\begin{bmatrix}3&0&1\end{bmatrix}\begin{bmatrix}2\\0\\2\end{bmatrix}
-$$
-
-
 
 
 ## 3.2 Linear Systems
