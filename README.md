@@ -1,76 +1,8 @@
 # Quick Reference
 
-## 2. Vector
-
-
-
-
-:pushpin:**Gram-Schmidt Orthogonalization**
-
-A basis $\Beta=\{e_1,e_2,...,e_n\}$ for an $n$-dimensional vector space can be orthogonalized by constructing a new set of vectors $\Beta'=\{e_1',e_2',...,e_n'\}$ using the formula
-$$
-e_i'=e_i-\sum_{k=1}^{i-1}\frac{e_i\cdot e_k'}{e_k'^2}e_k'
-$$
-
 
 
 ## 3. Matrices
-
-
-:pushpin: **Determinants**
-
-The determinant of an $n\times n$ matrix $M$ is given by the formulas
-
-
-
-the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ a
-$$
-\begin{align}
-\text{det}M =& \sum^{n}_{i=1}M_{ik}C_{ik}(M)\\
-
-\text{and}\\
-
-\text{det}M =& \sum^{n}_{j=1}M_{kj}C_{kj}(M)\\\\
-
-\text{where }C_{ij}(M)\text{ is the cofactor of }M_{ij}\text{defined by}\\
-C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}\\\\\\
-
-\text{Example of determinant of 2*2 and 3*3 matrix}\\\\
-
-\text{ det}\bigg(\begin{bmatrix}a&b\\c&d\end{bmatrix}\bigg) =& ad-bc
-
-\\
-
-\text{det}
-\Bigg(
-\begin{bmatrix}
-a&b&c\\
-d&e&f\\
-g&h&i
-\end{bmatrix}
-\Bigg)
-=&a\text{ det}\bigg(\begin{bmatrix}e&f\\h&i\end{bmatrix}\bigg)\\
--&b\text{ det}\bigg(\begin{bmatrix}d&f\\g&i\end{bmatrix}\bigg)\\
-+&c\text{ det}\bigg(\begin{bmatrix}d&e\\g&h\end{bmatrix}\bigg)\\
-\end{align}
-$$
-
-
-
-
-:pushpin: **Matrix Inverse**
-
-An $n\times n$ matrix $M$ is *invertible* if and only if the columns of $M$ form a **linearly independent set**. Equivalently, $M$ is invertible if and only if $\text{det}M≠0$ .
-
-The entries of the inverse $G$ of an $n\times n$ matrix $F$ can be calculated by using the explicit formula
-$$
-G_{ij} = \frac{C_{ji}(F)}{\text{det}F}
-$$
-Therefore, a $2\times 2$ matrix $A$ is given by
-$$
-A^{-1}=\frac{1}{\text{det}A}\begin{bmatrix}A_{22}&-A_{12}\\-A_{21}&A_{11}\end{bmatrix}
-$$
-Notice the negative sign in $A_{12}$ and $A_{21}$. That is because $C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}$. $1+2$ and $2+1$ are odd, so $(-1)$ is still negative.
 
 
 
@@ -107,6 +39,8 @@ $$
 where $\lambda_1,\lambda_2,...,\lambda_n$ are the eigenvalues of $M$.
 
 
+
+
 # Chapter 2 Vector
 
 ## 2.4 Vector Space
@@ -123,44 +57,6 @@ where $\lambda_1,\lambda_2,...,\lambda_n$ are the eigenvalues of $M$.
 - $(a+b)P = aP+bP$
 
 
-
-
-
-
-
-> ​	**Definition 2.15.** A basis $\Beta=\{e_1,e_2,...,e_n\}$ for a vector space is called **orthonormal** if for every pair $(i,j)$ we have $$
-
-$$
-\begin{align}
-e_i\cdot e_j=\delta_{ij}\\
-\delta_{ij}=
-\begin{cases}
-1,\text{ if }i=j\\0,\text{ if }i\neq j
-\end{cases}
-\end{align}
-$$
-
-where $\delta_{ij}$ is called **Kronecker delta**. 
-
-
-
-> ​	:computer:**Algorithm 2.16.** Gram-Schmidt Orthogonalization. Given a set of $n$ linearly independent vectors $\Beta=\{e_1,e_2,...,e_n\}$, this algorithm produces a set $\Beta'=\{e_1',e_2',...,e_n'\}$ such that
-
-$$
-e_i'\cdot e_j'=0, \text{whenever }i\neq j
-$$
-
-- A. set $e_1'=e_1$
-- B. Begin with index $i=2$
-- C. Subtract the projection of $e_i$ onto the vector $e_1',e_2',...,e_{i-1}'$ from $e_i$ and store the result in $e_i'$. That is
-
-$$
-e_i'=e_i-\sum_{k=1}^{i-1}\frac{e_i\cdot e_k'}{e_k'^2}e_k'
-$$
-
-- D. If $i<n$, $i++$, back to step C.
-
-⭐Big picture of Gram-Schmidt Orthogonalization: it **alternates coordinate systems.**
 
 
 
@@ -302,28 +198,6 @@ $$
 
 ## 3.3 Matrix Inverse
 
-> ​	⭐ **Invertible** : A matrix $M^{-1}$ is the *inverse* of $M$, such that - 
-
-$$
-MM^{-1} = M^{-1}M=1
-$$
-
-> ​	⭐**Singular**: Matrix is not *invertible*.
-
-
-
-> ​	:pencil:**Theorem 3.9.** A matrix possessing a row or column consisting **entirely of zeros** is **not invertible**.
-
-
-
-> ​	:pencil:**Theorem 3.10.** A matrix $M$ is *invertible* if and only if $M^T$ is invertible.
-
-
-
-
-> ​	:pencil:**Theorem 3.11.** If $F$ and $G$ are $n\times n$ invertible matrices, then the product $FG$ is invertible, and $(FG)^{-1}=G^{-1}F^{-1}$
-
-
 
 > ​	:pushpin: **Gauss-Jordan Elimination** : It is used to **transform a matrix into its reduced form.** But it can also be used to calculate the inverse of a matrix.
 
@@ -379,86 +253,7 @@ $$
 
 
 
-> ​	:pencil:**Theorem 3.15.** An $n\times n$ matrix $M$ is **invertible** if and only if the rows of $M$ **form a linearly independent set of vectors**.
-
-
-
-
-
 ## 3.4 Determinant
-
-> ​	⭐**Geometrical Big Picture**:  The *determinant* of a matrix tell you how much the linear transformation is.
-
-e.g. 
-
-In 2D, the determinant is how much does the **area** of unit $1\times1$ square change?
-
-In 3D, the determinant is how much does the **volume** of unit $1\times1\times1$ cube change?
-
-
-
-> ​	$\text{det}M$:	The **determinant** of a square matrix is a scalar quantity derived from the entries of the matrix.
-
-$$
-\text{An example of determinant of 3*3 matrix}\\
-\text{det}M=
-\begin{vmatrix}
-M_{11}&M_{12}&M_{13}\\ 
-M_{21}&M_{22}&M_{23}\\ 
-M_{31}&M_{32}&M_{33}\\ 
-\end{vmatrix}
-$$
-
-
-
-> ​	$M^{\{i,j\}}$ , denote the a $(n-1)\times(n-1)$ matrix which delete $i$-th row and $j$-column from original matrix M.  e.g.:
-
-$$
-M=
-\begin{bmatrix}
-1&2&3\\
-4&5&6\\
-7&8&9\\
-\end{bmatrix}
-\\
-M^{\{2,3\}}=
-\begin{bmatrix}
-1&2\\
-7&8\\
-\end{bmatrix}
-$$
-
-
-
-> ​	⭐**Definition 3.16.** Let $M$ be an $n\times n$ matrix. We define the $cofactor C_{ij}(M)$ of the matrix entry $M_{ij}$ as follows.
-
-$$
-C_{ij}(M)\equiv(-1)^{i+j}\text{det}M^{\{i,j\}}
-$$
-
-
-
-> ​	⭐ **Calculation of determinant**: 
-
-$$
-\begin{align}
-\text{det}
-\Bigg(
-\begin{bmatrix}
-a&b&c\\
-d&e&f\\
-g&h&i
-\end{bmatrix}
-\Bigg)
-=&a\text{ det}\bigg(\begin{bmatrix}e&f\\h&i\end{bmatrix}\bigg)\\
--&b\text{ det}\bigg(\begin{bmatrix}d&f\\g&i\end{bmatrix}\bigg)\\
-+&c\text{ det}\bigg(\begin{bmatrix}d&e\\g&h\end{bmatrix}\bigg)\\
-\end{align}
-$$
-
-Therefore, it is a **recursively** process.
-
-
 
 > ​	:pencil: **Theorem 3.17.** Performing elementary row operations on a matrix has the following effects on the determinant of that matrix. 
 
@@ -476,23 +271,7 @@ This is easy to understand geometrically. The rows in transpose are the column. 
 
 
 
->​	:pencil:**Theorem 3.19.** An $n\times n$ matrix $M$ is invertible if and only if $\text{det}M≠0$ .
-
-
-
 > ​	:pencil:**Theorem 3.20.** For any two $n\times n$ matrices $F$ and $G$, $\text{det}FG=\text{det}F\text{det}G$.
-
-
-
-> ​	:pencil: **Theorem 3.21.** Let $F$ be an $n\times n$ matrix and define the entries of an $n\times n$ matrix $G$ using the formula
-
-$$
-G_{ij} = \frac{C_{ij}(F)}{\text{det}F}
-$$
-
-> where $C_{ij}(F)$ is the cofactor of $(F^T)_{ij}$. Then $G=F^{-1}$
-
-
 
 
 
@@ -614,7 +393,6 @@ V_2&=b\begin{bmatrix}1\\-3\end{bmatrix}
 \end{align}
 $$
 
-> ​	⭐**Definition 3.24.** An $n\times n$ matrix $M$ is *symmetric* if and only if $M_{ij}= M_{ji}$  for all $i$ and $j$. That is, a matrix whose entries are symmetric about the main diagonal is called symmetric.
 
 
 
